@@ -4,18 +4,26 @@ from datetime import datetime
 current_time = datetime.now()
 current_minute = current_time.minute
 
+def func(minute):
+    if minute%2==0:
+        return "open_dialog"
+    else:
+        return "shake"
+
 json = """
     {
         "page_action" : [
             { 
-                "type" : You are {% if minute%2==0 %} a "open_dialog" {% else %} an "shake" {% endif %} 
+                "type" : {{message}}
             }
         ]
     }
 """
 
+message = func(current_minute)
+
 tm = Template(json)
 
-response = tm.render(minute=current_minute)
+response = tm.render(message=message)
 
 print(response)

@@ -24,7 +24,7 @@ func main() {
 	resp, err := http.Get("https://dummy.restapiexample.com/api/v1/employees")
 
 	if err != nil {
-		fmt.Println("some error occured %s", err)
+		fmt.Printf("some error occured %s", err)
 	}
 
 	status := resp.StatusCode
